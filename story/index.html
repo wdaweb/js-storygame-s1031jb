@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="dist/sweetalert2.all.min.js"></script>
+    <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+
+    <style>
+        body {
+            background-image: url(img/background.gif);
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+            text: "凌晨兩點，迷迷糊糊的起床上廁所，奇怪，宿舍這麼晚了，怎麼有人在打掃?",
+            imageUrl: 'img/source.gif',
+            imageWidth: 480,
+            imageHeight: 270,
+            showCancelButton: true,
+            confirmButtonText: '前往查看',
+            cancelButtonText: '上完廁所趕快睡覺',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
+                swalWithBootstrapButtons.fire({
+                    text: "呃...他的身體看起來好像不大舒服",
+                    imageUrl: 'img/uncomfortable.gif',
+                    imageWidth: 480,
+                    imageHeight: 270,
+                    showCancelButton: true,
+                    confirmButtonText: '上前關心',
+                    cancelButtonText: '不理他',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.value) {
+                        swalWithBootstrapButtons.fire({
+                            text: "小姐你還好嗎? 你受傷了嗎?",
+                            imageUrl: 'img/119.gif',
+                            imageWidth: 500,
+                            imageHeight: 281,
+                            showCancelButton: true,
+                            confirmButtonText: '嚇得跑回房間',
+                            cancelButtonText: '幫他打119',
+                            reverseButtons: true
+                        }).then((result) => {
+                            if (result.value) {
+                                swalWithBootstrapButtons.fire({
+                                    text: "想不到那瘋女人用時速300公里的速度追了上來",
+                                    imageUrl: 'img/run.gif',
+                                    imageWidth: 500,
+                                    imageHeight: 288,
+                                    showCancelButton: true,
+                                    confirmButtonText: '揍他一頓',
+                                    cancelButtonText: '唸心經超渡他',
+                                    reverseButtons: true
+                                }).then((result) => {
+                                    if (result.value) {
+                                        swalWithBootstrapButtons.fire({
+                                            text: "什麼嘛!原來是整人節目",
+                                            imageUrl: 'img/hit.gif',
+                                            imageWidth: 600,
+                                            imageHeight: 365,
+                                            showCancelButton: true,
+                                            cancelButtonText: '是在哈囉?',
+                                            reverseButtons: true
+                                        })
+                                    } else if (
+                                        /* Read more about handling dismissals below */
+                                        result.dismiss === Swal.DismissReason.cancel
+                                    ) {
+                                        swalWithBootstrapButtons.fire({
+                                            imageUrl: 'img/funny.gif',
+                                            imageWidth: 560,
+                                            imageHeight: 316,
+                                            text: '擋不住韓總機的攻勢，拍咪阿就地灰飛煙滅',
+                                        })
+                                    }
+                                })
+                            } else if (
+                                /* Read more about handling dismissals below */
+                                result.dismiss === Swal.DismissReason.cancel
+                            ) {
+                                swalWithBootstrapButtons.fire({
+                                    imageUrl: 'img/ambulance.gif',
+                                    imageWidth: 352,
+                                    imageHeight: 240,
+                                    text: '大發慈悲救人一命，給你一個讚!',
+                                })
+                            }
+                        })
+                    } else if (
+                        /* Read more about handling dismissals below */
+                        result.dismiss === Swal.DismissReason.cancel
+                    ) {
+                        swalWithBootstrapButtons.fire({
+                            imageUrl: 'img/heart.gif',
+                            imageWidth: 300,
+                            imageHeight: 300,
+                            text: '你有沒有良心? 沒有，因為你只想到你自己!',
+                        })
+                    }
+                })
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire({
+                    imageUrl: 'img/scare.jpg',
+                    imageWidth: 480,
+                    imageHeight: 341,
+                    text: '你該不會是害怕了吧?你這膽小鬼!',
+                })
+            }
+        })
+    </script>
+</body>
+
+</html>
